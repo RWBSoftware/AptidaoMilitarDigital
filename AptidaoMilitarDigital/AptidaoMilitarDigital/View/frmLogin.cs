@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AptidaoMilitarDigital.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,9 +36,15 @@ namespace AptidaoMilitarDigital.View
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
-            frmMenuPrincipal.Show();
-            this.Close();
+            UsuarioBD usuarioBD = new UsuarioBD();
+            HashSenha hashSenha = new HashSenha();
+            if (usuarioBD.Login(txtBoxUsuario.Text, hashSenha.GerarHash(txtBoxSenha.Text)))
+            {
+                frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
+                frmMenuPrincipal.Show();
+                this.Close();
+            }
+            else { MessageBox.Show("Usuário ou senha inválidos.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);}
         }
 
         private void btnSair_Click(object sender, EventArgs e)

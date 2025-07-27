@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AptidaoMilitarDigital.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,6 +40,16 @@ namespace AptidaoMilitarDigital.View
                 MessageBox.Show("A senha deve ter pelo menos 6 caracteres.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            UsuarioBD usuarioBD = new UsuarioBD();
+            HashSenha hashSenha = new HashSenha();
+            if (usuarioBD.Cadastro(cBoxPatente.SelectedItem.ToString(), txtBoxNomeGuerra.Text, txtBoxUsuario.Text, hashSenha.GerarHash(txtBoxSenha.Text)))
+            {
+                frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
+                frmMenuPrincipal.Show();
+                this.Close();
+            }
+            else { MessageBox.Show("Erro ao realizar o cadastro. Verifique os dados e tente novamente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void cBoxMostrarSenha_CheckedChanged(object sender, EventArgs e)

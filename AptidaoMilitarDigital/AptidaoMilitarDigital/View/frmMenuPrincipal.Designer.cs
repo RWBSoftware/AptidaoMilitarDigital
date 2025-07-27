@@ -34,7 +34,6 @@
             label2 = new Label();
             label1 = new Label();
             btnNovo = new Button();
-            btnEditar = new Button();
             btnExibir = new Button();
             btnRelatorio = new Button();
             btnConfig = new Button();
@@ -56,6 +55,9 @@
             txtBoxBarra = new TextBox();
             btnCadastro = new Button();
             btnLimpar = new Button();
+            txtNomeGuerraPesquisar = new TextBox();
+            cBoxPesquisarPatente = new ComboBox();
+            btnPesquisar = new Button();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -64,7 +66,6 @@
             // 
             flowLayoutPanel1.Controls.Add(panel1);
             flowLayoutPanel1.Controls.Add(btnNovo);
-            flowLayoutPanel1.Controls.Add(btnEditar);
             flowLayoutPanel1.Controls.Add(btnExibir);
             flowLayoutPanel1.Controls.Add(btnRelatorio);
             flowLayoutPanel1.Controls.Add(btnConfig);
@@ -118,31 +119,19 @@
             btnNovo.Text = "Novo";
             btnNovo.UseVisualStyleBackColor = false;
             // 
-            // btnEditar
-            // 
-            btnEditar.BackColor = Color.FromArgb(52, 152, 219);
-            btnEditar.FlatAppearance.BorderSize = 0;
-            btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEditar.Location = new Point(3, 165);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(207, 54);
-            btnEditar.TabIndex = 2;
-            btnEditar.Text = "Editar";
-            btnEditar.UseVisualStyleBackColor = false;
-            // 
             // btnExibir
             // 
             btnExibir.BackColor = Color.FromArgb(52, 152, 219);
             btnExibir.FlatAppearance.BorderSize = 0;
             btnExibir.FlatStyle = FlatStyle.Flat;
             btnExibir.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnExibir.Location = new Point(3, 225);
+            btnExibir.Location = new Point(3, 165);
             btnExibir.Name = "btnExibir";
             btnExibir.Size = new Size(207, 54);
             btnExibir.TabIndex = 3;
             btnExibir.Text = "Exibir";
             btnExibir.UseVisualStyleBackColor = false;
+            btnExibir.Click += btnExibir_Click;
             // 
             // btnRelatorio
             // 
@@ -150,12 +139,13 @@
             btnRelatorio.FlatAppearance.BorderSize = 0;
             btnRelatorio.FlatStyle = FlatStyle.Flat;
             btnRelatorio.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRelatorio.Location = new Point(3, 285);
+            btnRelatorio.Location = new Point(3, 225);
             btnRelatorio.Name = "btnRelatorio";
             btnRelatorio.Size = new Size(207, 54);
             btnRelatorio.TabIndex = 4;
             btnRelatorio.Text = "Relatorio";
             btnRelatorio.UseVisualStyleBackColor = false;
+            btnRelatorio.Click += btnRelatorio_Click;
             // 
             // btnConfig
             // 
@@ -163,7 +153,7 @@
             btnConfig.FlatAppearance.BorderSize = 0;
             btnConfig.FlatStyle = FlatStyle.Flat;
             btnConfig.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConfig.Location = new Point(3, 345);
+            btnConfig.Location = new Point(3, 285);
             btnConfig.Name = "btnConfig";
             btnConfig.Size = new Size(207, 54);
             btnConfig.TabIndex = 5;
@@ -176,7 +166,7 @@
             btnSair.FlatAppearance.BorderSize = 0;
             btnSair.FlatStyle = FlatStyle.Flat;
             btnSair.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSair.Location = new Point(3, 405);
+            btnSair.Location = new Point(3, 345);
             btnSair.Name = "btnSair";
             btnSair.Size = new Size(207, 54);
             btnSair.TabIndex = 6;
@@ -189,9 +179,8 @@
             cBoxPatente.DropDownStyle = ComboBoxStyle.DropDownList;
             cBoxPatente.FlatStyle = FlatStyle.Flat;
             cBoxPatente.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cBoxPatente.FormattingEnabled = true;
-            cBoxPatente.Items.AddRange(new object[] { "Soldado", "Cabo", "Sargento", "Sub-Tenente", "Tenente", "Capitão", "Major", "Tenente-Coronel", "Coronel", "General" });
-            cBoxPatente.Location = new Point(262, 76);
+            cBoxPatente.Items.AddRange(new object[] { "Sd", "Cb", "Sgt", "Sub", "Ten", "Cap", "Maj", "Ten Cel", "Cel", "Gen" });
+            cBoxPatente.Location = new Point(262, 116);
             cBoxPatente.Name = "cBoxPatente";
             cBoxPatente.Size = new Size(207, 36);
             cBoxPatente.TabIndex = 15;
@@ -199,7 +188,7 @@
             // txtBoxNomeGuerra
             // 
             txtBoxNomeGuerra.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNomeGuerra.Location = new Point(262, 36);
+            txtBoxNomeGuerra.Location = new Point(262, 76);
             txtBoxNomeGuerra.MaxLength = 50;
             txtBoxNomeGuerra.Name = "txtBoxNomeGuerra";
             txtBoxNomeGuerra.PlaceholderText = "Nome de Guerra";
@@ -209,7 +198,7 @@
             // txtBoxIdade
             // 
             txtBoxIdade.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxIdade.Location = new Point(262, 118);
+            txtBoxIdade.Location = new Point(262, 158);
             txtBoxIdade.MaxLength = 50;
             txtBoxIdade.Name = "txtBoxIdade";
             txtBoxIdade.PlaceholderText = "Idade";
@@ -226,7 +215,7 @@
             cBoxSexo.ForeColor = Color.FromArgb(209, 209, 209);
             cBoxSexo.FormattingEnabled = true;
             cBoxSexo.Items.AddRange(new object[] { "Masculino", "Feminino" });
-            cBoxSexo.Location = new Point(262, 186);
+            cBoxSexo.Location = new Point(262, 236);
             cBoxSexo.Name = "cBoxSexo";
             cBoxSexo.Size = new Size(207, 58);
             cBoxSexo.TabIndex = 17;
@@ -237,7 +226,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(209, 209, 209);
-            label3.Location = new Point(262, 155);
+            label3.Location = new Point(262, 205);
             label3.Name = "label3";
             label3.Size = new Size(61, 28);
             label3.TabIndex = 18;
@@ -248,7 +237,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(209, 209, 209);
-            label4.Location = new Point(262, 247);
+            label4.Location = new Point(262, 298);
             label4.Name = "label4";
             label4.Size = new Size(86, 28);
             label4.TabIndex = 20;
@@ -263,7 +252,7 @@
             cBoxCarreira.ForeColor = Color.FromArgb(209, 209, 209);
             cBoxCarreira.FormattingEnabled = true;
             cBoxCarreira.Items.AddRange(new object[] { "Sim", "Não" });
-            cBoxCarreira.Location = new Point(262, 278);
+            cBoxCarreira.Location = new Point(262, 328);
             cBoxCarreira.Name = "cBoxCarreira";
             cBoxCarreira.Size = new Size(207, 58);
             cBoxCarreira.TabIndex = 19;
@@ -272,7 +261,7 @@
             // txtBoxCorrida
             // 
             txtBoxCorrida.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxCorrida.Location = new Point(515, 36);
+            txtBoxCorrida.Location = new Point(515, 76);
             txtBoxCorrida.MaxLength = 50;
             txtBoxCorrida.Name = "txtBoxCorrida";
             txtBoxCorrida.PlaceholderText = "Corrida";
@@ -283,7 +272,7 @@
             // txtBoxNotaCorrida
             // 
             txtBoxNotaCorrida.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNotaCorrida.Location = new Point(515, 76);
+            txtBoxNotaCorrida.Location = new Point(515, 116);
             txtBoxNotaCorrida.MaxLength = 50;
             txtBoxNotaCorrida.Name = "txtBoxNotaCorrida";
             txtBoxNotaCorrida.PlaceholderText = "Nota Corrida";
@@ -293,7 +282,7 @@
             // txtBoxNotaFlexao
             // 
             txtBoxNotaFlexao.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNotaFlexao.Location = new Point(515, 156);
+            txtBoxNotaFlexao.Location = new Point(515, 196);
             txtBoxNotaFlexao.MaxLength = 50;
             txtBoxNotaFlexao.Name = "txtBoxNotaFlexao";
             txtBoxNotaFlexao.PlaceholderText = "Nota Flexão";
@@ -303,7 +292,7 @@
             // txtBoxFlexao
             // 
             txtBoxFlexao.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxFlexao.Location = new Point(515, 116);
+            txtBoxFlexao.Location = new Point(515, 156);
             txtBoxFlexao.MaxLength = 50;
             txtBoxFlexao.Name = "txtBoxFlexao";
             txtBoxFlexao.PlaceholderText = "Flexão";
@@ -314,7 +303,7 @@
             // txtBoxNotaAbd
             // 
             txtBoxNotaAbd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNotaAbd.Location = new Point(515, 235);
+            txtBoxNotaAbd.Location = new Point(515, 276);
             txtBoxNotaAbd.MaxLength = 50;
             txtBoxNotaAbd.Name = "txtBoxNotaAbd";
             txtBoxNotaAbd.PlaceholderText = "Nota Abdominal";
@@ -324,7 +313,7 @@
             // txtBoxAbd
             // 
             txtBoxAbd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxAbd.Location = new Point(515, 196);
+            txtBoxAbd.Location = new Point(515, 236);
             txtBoxAbd.MaxLength = 50;
             txtBoxAbd.Name = "txtBoxAbd";
             txtBoxAbd.PlaceholderText = "Abdominal";
@@ -335,7 +324,7 @@
             // txtBoxNotaBarra
             // 
             txtBoxNotaBarra.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxNotaBarra.Location = new Point(515, 315);
+            txtBoxNotaBarra.Location = new Point(515, 356);
             txtBoxNotaBarra.MaxLength = 50;
             txtBoxNotaBarra.Name = "txtBoxNotaBarra";
             txtBoxNotaBarra.PlaceholderText = "Nota Barra";
@@ -345,7 +334,7 @@
             // txtBoxBarra
             // 
             txtBoxBarra.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBoxBarra.Location = new Point(515, 275);
+            txtBoxBarra.Location = new Point(515, 316);
             txtBoxBarra.MaxLength = 50;
             txtBoxBarra.Name = "txtBoxBarra";
             txtBoxBarra.PlaceholderText = "Barra";
@@ -359,7 +348,7 @@
             btnCadastro.FlatAppearance.BorderSize = 0;
             btnCadastro.FlatStyle = FlatStyle.Flat;
             btnCadastro.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCadastro.Location = new Point(515, 368);
+            btnCadastro.Location = new Point(515, 405);
             btnCadastro.Name = "btnCadastro";
             btnCadastro.Size = new Size(207, 54);
             btnCadastro.TabIndex = 29;
@@ -373,7 +362,7 @@
             btnLimpar.FlatAppearance.BorderSize = 0;
             btnLimpar.FlatStyle = FlatStyle.Flat;
             btnLimpar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLimpar.Location = new Point(262, 368);
+            btnLimpar.Location = new Point(262, 405);
             btnLimpar.Name = "btnLimpar";
             btnLimpar.Size = new Size(207, 54);
             btnLimpar.TabIndex = 30;
@@ -381,12 +370,51 @@
             btnLimpar.UseVisualStyleBackColor = false;
             btnLimpar.Click += btnLimpar_Click;
             // 
+            // txtNomeGuerraPesquisar
+            // 
+            txtNomeGuerraPesquisar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNomeGuerraPesquisar.Location = new Point(354, 14);
+            txtNomeGuerraPesquisar.MaxLength = 50;
+            txtNomeGuerraPesquisar.Name = "txtNomeGuerraPesquisar";
+            txtNomeGuerraPesquisar.PlaceholderText = "Nome de Guerra";
+            txtNomeGuerraPesquisar.Size = new Size(219, 34);
+            txtNomeGuerraPesquisar.TabIndex = 31;
+            // 
+            // cBoxPesquisarPatente
+            // 
+            cBoxPesquisarPatente.DropDownStyle = ComboBoxStyle.DropDownList;
+            cBoxPesquisarPatente.FlatStyle = FlatStyle.Flat;
+            cBoxPesquisarPatente.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cBoxPesquisarPatente.FormattingEnabled = true;
+            cBoxPesquisarPatente.Items.AddRange(new object[] { "Sd", "Cb", "Sgt", "Sub", "Ten", "Cap", "Maj", "Ten Cel", "Cel", "Gen" });
+            cBoxPesquisarPatente.Location = new Point(262, 12);
+            cBoxPesquisarPatente.Name = "cBoxPesquisarPatente";
+            cBoxPesquisarPatente.Size = new Size(86, 36);
+            cBoxPesquisarPatente.TabIndex = 32;
+            // 
+            // btnPesquisar
+            // 
+            btnPesquisar.BackColor = Color.Gray;
+            btnPesquisar.FlatAppearance.BorderSize = 0;
+            btnPesquisar.FlatStyle = FlatStyle.Flat;
+            btnPesquisar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPesquisar.Location = new Point(579, 12);
+            btnPesquisar.Name = "btnPesquisar";
+            btnPesquisar.Size = new Size(143, 36);
+            btnPesquisar.TabIndex = 33;
+            btnPesquisar.Text = "Pesquisar";
+            btnPesquisar.UseVisualStyleBackColor = false;
+            btnPesquisar.Click += btnPesquisar_Click;
+            // 
             // frmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(31, 31, 31);
             ClientSize = new Size(800, 461);
+            Controls.Add(btnPesquisar);
+            Controls.Add(cBoxPesquisarPatente);
+            Controls.Add(txtNomeGuerraPesquisar);
             Controls.Add(btnLimpar);
             Controls.Add(btnCadastro);
             Controls.Add(txtBoxNotaBarra);
@@ -425,7 +453,6 @@
         private Panel panel1;
         private Label label2;
         private Button btnNovo;
-        private Button btnEditar;
         private Button btnExibir;
         private Button btnRelatorio;
         private Button btnConfig;
@@ -447,5 +474,8 @@
         private TextBox txtBoxBarra;
         private Button btnCadastro;
         private Button btnLimpar;
+        private TextBox txtNomeGuerraPesquisar;
+        private ComboBox cBoxPesquisarPatente;
+        private Button btnPesquisar;
     }
 }
