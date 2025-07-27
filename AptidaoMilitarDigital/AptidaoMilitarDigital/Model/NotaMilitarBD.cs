@@ -193,5 +193,51 @@ namespace AptidaoMilitarDigital.Model
             finally{ conexao.Close(); }
         }
 
+        public DataTable BuscarMilitarEspecifico(string nomeGuerra, string patente)
+        {
+            DataTable tabela = new DataTable();
+
+            try
+            {
+                conexao.Open();
+                cmd.Parameters.Clear();
+
+                cmd.CommandText = @"SELECT * FROM ResultadoDosMilitares WHERE NomeGuerra LIKE @NomeGuerra AND (@Patente IS NULL OR Patente = @Patente)";
+
+                cmd.Parameters.AddWithValue("@NomeGuerra", $"%{nomeGuerra}%");
+                cmd.Parameters.AddWithValue("@Patente", string.IsNullOrEmpty(patente) ? (object)DBNull.Value : patente);
+                cmd.Connection = conexao;
+
+                SqlDataAdapter adaptador = new SqlDataAdapter(cmd);
+                adaptador.Fill(tabela);
+
+                return tabela;
+            }
+            catch (Exception ex) { MessageBox.Show("Erro ao buscar dados: " + ex.Message); return null; }
+            finally{ conexao.Close(); }
+        }
+
+        public void ExcluirDoBanco(int id)
+        {
+            try
+            {
+                conexao.Open();
+                cmd.Parameters.Clear();
+                cmd.CommandText = "DELETE FROM ResultadoDosMilitares WHERE Id = @id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Connection = conexao;
+
+                int linhasAfetadas = cmd.ExecuteNonQuery();
+
+                if (linhasAfetadas > 0)
+                    MessageBox.Show("Registro excluído com sucesso!");
+                else
+                    MessageBox.Show("Nenhum registro encontrado.");
+            }
+            catch (Exception ex) { MessageBox.Show("Erro ao excluir: " + ex.Message); }
+            finally { conexao.Close(); }
+        }
+
+
     }
 }

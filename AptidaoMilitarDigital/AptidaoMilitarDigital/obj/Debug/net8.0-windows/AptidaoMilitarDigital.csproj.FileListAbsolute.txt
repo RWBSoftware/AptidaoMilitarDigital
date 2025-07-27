@@ -86,3 +86,4 @@ C:\Users\kauac\OneDrive\Documentos\Projetos\AptidaoMilitarDigital\AptidaoMilitar
 C:\Users\kauac\OneDrive\Documentos\Projetos\AptidaoMilitarDigital\AptidaoMilitarDigital\bin\Debug\net8.0-windows\MigraDoc.DocumentObjectModel.dll
 C:\Users\kauac\OneDrive\Documentos\Projetos\AptidaoMilitarDigital\AptidaoMilitarDigital\bin\Debug\net8.0-windows\MigraDoc.Rendering-gdi.dll
 C:\Users\kauac\OneDrive\Documentos\Projetos\AptidaoMilitarDigital\AptidaoMilitarDigital\bin\Debug\net8.0-windows\MigraDoc.RtfRendering-gdi.dll
+C:\Users\kauac\OneDrive\Documentos\Projetos\AptidaoMilitarDigital\AptidaoMilitarDigital\obj\Debug\net8.0-windows\AptidaoMilitarDigital.View.frmConfig.resources

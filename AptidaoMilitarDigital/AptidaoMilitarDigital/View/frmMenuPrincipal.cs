@@ -24,7 +24,7 @@ namespace AptidaoMilitarDigital.View
         public void VerificarHorario()
         {
             DateTime horaAtual = DateTime.Now;
-            label2.Text = horaAtual.ToString("dd/MM/yy HH:mm:ss");
+            label2.Text = horaAtual.ToString("dd/MM/yy HH:mm");
 
             int hora = horaAtual.Hour;
             if (hora >= 6 && hora < 12)
@@ -313,12 +313,24 @@ namespace AptidaoMilitarDigital.View
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
             NotaMilitarBD notaMilitarBD = new NotaMilitarBD();
-            GerarPDF gerarPDF = new GerarPDF(); 
+            GerarPDF gerarPDF = new GerarPDF();
             DataTable dados = notaMilitarBD.BuscarTodosResultados();
             string pastaDocumentos = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string caminho = Path.Combine(pastaDocumentos, "RelatorioMilitar.pdf");
             gerarPDF.GerarPdfComTabela(dados, caminho);
             MessageBox.Show("PDF gerado com sucesso!");
+        }
+
+        private void btnConfig_Click(object sender, EventArgs e)
+        {
+            frmConfig frmConfig = new frmConfig();
+            frmConfig.Show();
+            this.Close();
+        }
+
+        private void frmMenuPrincipal_Load(object sender, EventArgs e)
+        {
+            VerificarHorario();
         }
     }
 }

@@ -159,6 +159,7 @@
             btnConfig.TabIndex = 5;
             btnConfig.Text = "Configurações";
             btnConfig.UseVisualStyleBackColor = false;
+            btnConfig.Click += btnConfig_Click;
             // 
             // btnSair
             // 
@@ -439,6 +440,7 @@
             Name = "frmMenuPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Aptidão Militar Digital";
+            Load += frmMenuPrincipal_Load;
             flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

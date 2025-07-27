@@ -17,35 +17,42 @@ namespace AptidaoMilitarDigital.Model
             // Define estilo padrão
             Style style = doc.Styles["Normal"];
             style.Font.Name = "Segoe UI";
-            style.Font.Size = 14;
+            style.Font.Size = 9; // Fonte menor para caber mais coisa
 
-            // Cria uma seção no documento
+            // Cria seção com orientação paisagem
             Section secao = doc.AddSection();
+            secao.PageSetup.Orientation = MigraDoc.DocumentObjectModel.Orientation.Landscape;
 
             // Cria uma tabela MigraDoc
             Table tabelaPdf = new Table();
             tabelaPdf.Borders.Width = 0.75;
+            tabelaPdf.Format.Alignment = ParagraphAlignment.Center;
 
-            // Define colunas baseado nas colunas do DataTable
+            int totalColunas = tabela.Columns.Count;
+            double larguraTotal = 27.0; // Largura total de uma folha A4 paisagem em cm (com margem)
+            double larguraColuna = larguraTotal / totalColunas;
+
+            // Define colunas dinamicamente
             foreach (DataColumn coluna in tabela.Columns)
             {
-                Column col = tabelaPdf.AddColumn(Unit.FromCentimeter(3)); // largura fixa 3 cm, pode ajustar
+                Column col = tabelaPdf.AddColumn(Unit.FromCentimeter(larguraColuna));
                 col.Format.Alignment = ParagraphAlignment.Center;
             }
 
-            // Linha de cabeçalho
-            Row linhaCabecalho = tabelaPdf.AddRow();
-            linhaCabecalho.Shading.Color = Colors.LightGray;
-            linhaCabecalho.HeadingFormat = true;
+            // Cabeçalho
+            Row cabecalho = tabelaPdf.AddRow();
+            cabecalho.Shading.Color = Colors.LightGray;
+            cabecalho.HeadingFormat = true;
 
             for (int i = 0; i < tabela.Columns.Count; i++)
             {
-                linhaCabecalho.Cells[i].AddParagraph(tabela.Columns[i].ColumnName);
-                linhaCabecalho.Cells[i].Format.Font.Bold = true;
-                linhaCabecalho.Cells[i].Format.Alignment = ParagraphAlignment.Center;
+                cabecalho.Cells[i].AddParagraph(tabela.Columns[i].ColumnName);
+                cabecalho.Cells[i].Format.Font.Bold = true;
+                cabecalho.Cells[i].Format.Alignment = ParagraphAlignment.Center;
+                cabecalho.Cells[i].Format.Font.Size = 9;
             }
 
-            // Preenche dados
+            // Dados
             foreach (DataRow dr in tabela.Rows)
             {
                 Row linha = tabelaPdf.AddRow();
@@ -53,20 +60,22 @@ namespace AptidaoMilitarDigital.Model
                 {
                     linha.Cells[i].AddParagraph(dr[i].ToString());
                     linha.Cells[i].Format.Alignment = ParagraphAlignment.Center;
+                    linha.Cells[i].Format.Font.Size = 8;
+                    linha.Cells[i].Format.LeftIndent = 0;
                 }
             }
 
-            // Adiciona a tabela na seção
+            // Adiciona a tabela
             secao.Add(tabelaPdf);
 
-            // Renderiza PDF
+            // Renderiza
             PdfDocumentRenderer renderer = new PdfDocumentRenderer(true)
             {
                 Document = doc
             };
             renderer.RenderDocument();
 
-            // Salva o arquivo
+            // Salva
             renderer.PdfDocument.Save(caminhoArquivo);
         }
     }
