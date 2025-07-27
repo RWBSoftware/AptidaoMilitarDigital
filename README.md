@@ -25,8 +25,7 @@
 
 - 🪖 **Menu de Militares**  
   Exibição de todos os militares cadastrados, com opção de busca.
-<img width="802" height="485" alt="{4AB72956-2E62-4CA6-96FE-9EA544DB07CF}" src="https://github.com/user-attachments/assets/69f840b6-0fde-40bd-9eb7-0d901cdbf1ac" />
-
+<img width="800" height="501" alt="{7FB02CEF-AC9F-4EBC-A13B-2288AFF264A8}" src="https://github.com/user-attachments/assets/1f6d4122-c2ec-4a86-b7e5-c03bfe4df164" />
 
 - ⚙️ **Aba de Configurações** *(em desenvolvimento)*  
   Personalização e ajustes do sistema (em breve).
