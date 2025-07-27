@@ -69,9 +69,8 @@ string _caminho = "Data Source=SEU_SERVIDOR;Initial Catalog=AMD;Integrated Secur
 
 ---
 
-## 🧑‍💻 Desenvolvido por
+## 🧑‍💻 Desenvolvido por **RWB Software**
 
-**RWB Software**
 👨‍💻 Desenvolvedor: **Kauã Castro**
 
 📩 Em caso de dúvidas, sugestões de melhorias ou propostas de parceria, entre em contato:
