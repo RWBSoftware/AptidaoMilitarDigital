@@ -14,10 +14,12 @@ namespace AptidaoMilitarDigital.View
     public partial class frmMenuPrincipal : Form
     {
         public int IDMilitar = 0;
-        public frmMenuPrincipal()
+        public DadosUsuario dadosUsuario;
+        public frmMenuPrincipal(DadosUsuario _dadosUsuario)
         {
             InitializeComponent();
             VerificarHorario();
+            dadosUsuario = _dadosUsuario;
         }
 
 
@@ -35,7 +37,7 @@ namespace AptidaoMilitarDigital.View
                 label1.Text = "Boa noite!";
         }
 
-        private void btnCadastro_Click(object sender, EventArgs e)
+        public void VerificarCadastroNota()
         {
             if (txtBoxNomeGuerra.Text.Length < 4)
             {
@@ -197,11 +199,16 @@ namespace AptidaoMilitarDigital.View
             }
         }
 
+        private void btnCadastro_Click(object sender, EventArgs e)
+        {
+            VerificarCadastroNota();
+        }
+
         private void txtBoxIdade_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true; // Cancela a tecla pressionada
+                e.Handled = true;
             }
         }
 
@@ -323,7 +330,7 @@ namespace AptidaoMilitarDigital.View
 
         private void btnConfig_Click(object sender, EventArgs e)
         {
-            frmConfig frmConfig = new frmConfig();
+            frmConfig frmConfig = new frmConfig(dadosUsuario);
             frmConfig.Show();
             this.Close();
         }

@@ -43,9 +43,10 @@ namespace AptidaoMilitarDigital.View
 
             UsuarioBD usuarioBD = new UsuarioBD();
             HashSenha hashSenha = new HashSenha();
-            if (usuarioBD.Cadastro(cBoxPatente.SelectedItem.ToString(), txtBoxNomeGuerra.Text, txtBoxUsuario.Text, hashSenha.GerarHash(txtBoxSenha.Text)))
+            DadosUsuario dadosUsuario = usuarioBD.Cadastro(cBoxPatente.SelectedItem.ToString(), txtBoxNomeGuerra.Text, txtBoxUsuario.Text, hashSenha.GerarHash(txtBoxSenha.Text));
+            if (dadosUsuario != null)
             {
-                frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
+                frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal(dadosUsuario);
                 frmMenuPrincipal.Show();
                 this.Close();
             }

@@ -1,16 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\kauac\\OneDrive\\Documentos\\Projetos\\AptidaoMilitarDigital\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{76402E3F-45EE-4B27-956B-EEEDE0104766}|AptidaoMilitarDigital\\AptidaoMilitarDigital.csproj|c:\\users\\kauac\\onedrive\\documentos\\projetos\\aptidaomilitardigital\\aptidaomilitardigital\\view\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{76402E3F-45EE-4B27-956B-EEEDE0104766}|AptidaoMilitarDigital\\AptidaoMilitarDigital.csproj|solutionrelative:aptidaomilitardigital\\view\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76402E3F-45EE-4B27-956B-EEEDE0104766}|AptidaoMilitarDigital\\AptidaoMilitarDigital.csproj|c:\\users\\kauac\\onedrive\\documentos\\projetos\\aptidaomilitardigital\\aptidaomilitardigital\\view\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{76402E3F-45EE-4B27-956B-EEEDE0104766}|AptidaoMilitarDigital\\AptidaoMilitarDigital.csproj|solutionrelative:aptidaomilitardigital\\view\\frmmenuprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Projetos\\AptidaoMilitarDigital\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,31 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "frmMenuPrincipal.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\kauac\\OneDrive\\Documentos\\Projetos\\AptidaoMilitarDigital\\AptidaoMilitarDigital\\View\\frmMenuPrincipal.cs",
-              "RelativeDocumentMoniker": "AptidaoMilitarDigital\\View\\frmMenuPrincipal.cs",
-              "ToolTip": "C:\\Users\\kauac\\OneDrive\\Documentos\\Projetos\\AptidaoMilitarDigital\\AptidaoMilitarDigital\\View\\frmMenuPrincipal.cs [Projeto]",
-              "RelativeToolTip": "AptidaoMilitarDigital\\View\\frmMenuPrincipal.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T02:03:10.112Z",
-              "EditorCaption": " [Projeto]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmMenuPrincipal.cs",
-              "DocumentMoniker": "C:\\Users\\kauac\\OneDrive\\Documentos\\Projetos\\AptidaoMilitarDigital\\AptidaoMilitarDigital\\View\\frmMenuPrincipal.cs",
-              "RelativeDocumentMoniker": "AptidaoMilitarDigital\\View\\frmMenuPrincipal.cs",
-              "ToolTip": "C:\\Users\\kauac\\OneDrive\\Documentos\\Projetos\\AptidaoMilitarDigital\\AptidaoMilitarDigital\\View\\frmMenuPrincipal.cs",
-              "RelativeToolTip": "AptidaoMilitarDigital\\View\\frmMenuPrincipal.cs",
-              "ViewState": "AgIAADoBAAAAAAAAAAAQwEMBAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-25T02:07:26.788Z",
-              "EditorCaption": ""
             }
           ]
         }

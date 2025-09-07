@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AptidaoMilitarDigital.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace AptidaoMilitarDigital.View
 {
     public partial class frmConfig : Form
     {
-        public frmConfig()
+        DadosUsuario dadosUsuario = new DadosUsuario();
+        public frmConfig(DadosUsuario _dadosUsuario)
         {
             InitializeComponent();
+            dadosUsuario = _dadosUsuario;
         }
 
         private void btnTrocarConta_Click(object sender, EventArgs e)
@@ -26,8 +29,22 @@ namespace AptidaoMilitarDigital.View
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
+            frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal(dadosUsuario);
             frmMenuPrincipal.Show();
+            this.Close();
+        }
+
+        private void btnAvaliacao_Click(object sender, EventArgs e)
+        {
+            frmAvaliacao frmAvaliacao = new frmAvaliacao(dadosUsuario);
+            frmAvaliacao.Show();
+            this.Close();
+        }
+
+        private void btnMudarSenha_Click(object sender, EventArgs e)
+        {
+            frmAlterarSenha frmAlterarSenha = new frmAlterarSenha(dadosUsuario);
+            frmAlterarSenha.Show();
             this.Close();
         }
     }

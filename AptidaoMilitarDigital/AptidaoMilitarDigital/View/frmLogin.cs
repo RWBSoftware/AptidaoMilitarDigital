@@ -38,9 +38,10 @@ namespace AptidaoMilitarDigital.View
         {
             UsuarioBD usuarioBD = new UsuarioBD();
             HashSenha hashSenha = new HashSenha();
-            if (usuarioBD.Login(txtBoxUsuario.Text, hashSenha.GerarHash(txtBoxSenha.Text)))
+            DadosUsuario dadosUsuario = usuarioBD.Login(txtBoxUsuario.Text, hashSenha.GerarHash(txtBoxSenha.Text));
+            if (dadosUsuario != null)
             {
-                frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal();
+                frmMenuPrincipal frmMenuPrincipal = new frmMenuPrincipal(dadosUsuario);
                 frmMenuPrincipal.Show();
                 this.Close();
             }

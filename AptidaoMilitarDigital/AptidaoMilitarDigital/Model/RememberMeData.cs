@@ -4,16 +4,24 @@ using System.Text.Json;
 public class RememberMeData
 {
     public string Username { get; set; }
-    public string Password { get; set; } // Só exemplo, ideal é criptografar
+    public string Password { get; set; } 
     public bool RememberMe { get; set; }
 }
 
 public class RememberMeManager
 {
-    private const string FilePath = "rememberMe.json";
+    private static readonly string FilePath = Path.Combine(
+    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+    "AptidaoMilitarDigital",
+    "rememberMe.json"
+);
 
     public void Save(RememberMeData data)
     {
+        string pasta = Path.GetDirectoryName(FilePath);
+        if (!Directory.Exists(pasta))
+            Directory.CreateDirectory(pasta);
+
         string json = JsonSerializer.Serialize(data);
         File.WriteAllText(FilePath, json);
     }
@@ -32,3 +40,4 @@ public class RememberMeManager
             File.Delete(FilePath);
     }
 }
+

@@ -32,7 +32,7 @@
             btnMudarSenha = new Button();
             btnTrocarConta = new Button();
             btnSair = new Button();
-            btnExcluirConta = new Button();
+            btnAvaliacao = new Button();
             SuspendLayout();
             // 
             // btnMudarSenha
@@ -47,6 +47,7 @@
             btnMudarSenha.TabIndex = 7;
             btnMudarSenha.Text = "Mudar Senha";
             btnMudarSenha.UseVisualStyleBackColor = false;
+            btnMudarSenha.Click += btnMudarSenha_Click;
             // 
             // btnTrocarConta
             // 
@@ -76,18 +77,19 @@
             btnSair.UseVisualStyleBackColor = false;
             btnSair.Click += btnSair_Click;
             // 
-            // btnExcluirConta
+            // btnAvaliacao
             // 
-            btnExcluirConta.BackColor = Color.FromArgb(59, 154, 109);
-            btnExcluirConta.FlatAppearance.BorderSize = 0;
-            btnExcluirConta.FlatStyle = FlatStyle.Flat;
-            btnExcluirConta.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnExcluirConta.Location = new Point(76, 132);
-            btnExcluirConta.Name = "btnExcluirConta";
-            btnExcluirConta.Size = new Size(207, 54);
-            btnExcluirConta.TabIndex = 12;
-            btnExcluirConta.Text = "Excluir Conta";
-            btnExcluirConta.UseVisualStyleBackColor = false;
+            btnAvaliacao.BackColor = Color.FromArgb(59, 154, 109);
+            btnAvaliacao.FlatAppearance.BorderSize = 0;
+            btnAvaliacao.FlatStyle = FlatStyle.Flat;
+            btnAvaliacao.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAvaliacao.Location = new Point(76, 132);
+            btnAvaliacao.Name = "btnAvaliacao";
+            btnAvaliacao.Size = new Size(207, 54);
+            btnAvaliacao.TabIndex = 12;
+            btnAvaliacao.Text = "Avaliação";
+            btnAvaliacao.UseVisualStyleBackColor = false;
+            btnAvaliacao.Click += btnAvaliacao_Click;
             // 
             // frmConfig
             // 
@@ -95,7 +97,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(31, 31, 31);
             ClientSize = new Size(360, 263);
-            Controls.Add(btnExcluirConta);
+            Controls.Add(btnAvaliacao);
             Controls.Add(btnMudarSenha);
             Controls.Add(btnTrocarConta);
             Controls.Add(btnSair);
@@ -113,6 +115,6 @@
         private Button btnMudarSenha;
         private Button btnTrocarConta;
         private Button btnSair;
-        private Button btnExcluirConta;
+        private Button btnAvaliacao;
     }
 }
